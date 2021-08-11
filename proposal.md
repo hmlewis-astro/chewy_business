@@ -1,7 +1,9 @@
 # Project Proposal
-## Interpreting the impact of lead-actor demographics on film revenue
+## The Problem with Pandemic Puppies: improving fulfillment efficiency at Chewy
 
-Based on a [study of the top grossing US films of 2020](https://womenintvfilm.sdsu.edu/research/), The Center for the Study of Women in Television and Film found that there is a significant disparity in the _number of female versus male protagonists_ in movies released during 2020, and a significant difference in the _ages of those actors_. Here, we aim to determine what (if any) impact these differences in actor demographics (i.e., gender and age) have on the lifetime gross of a movie.
+According to the [ASPCA](https://aspca.app.box.com/s/v4t7yrwalwk39mf71a857ivqoxnv2x3d), since the beginning of the COVID-19 crisis, approximately one in five households in the US has acquired a cat or dog. This "pet boom" placed a serious strain on the supply chain of many pet supply companies; in particular, Chewy&mdash;an exclusively online retailer of pet food and other pet-related products&mdash;reported $20 million in extra fulfillment spend during the first quarter of 2020, due to inventory imbalances and an increase in expedited orders.
+
+
 
 
 ### Question:
@@ -22,12 +24,8 @@ Given the name and IMDb webpage link for the lead-actor of each film, we will sc
 For each movie (i.e., an individual sample of analysis), our dataset will therefore include: title, world and domestic/foreign gross, domestic opening gross, budget, MPAA rating, run time, genre, lead-actor age (at the time of release), height, and gender. Here, the total world gross will act as the target, and all other observations (excepting the movie title) will act as the features in the model.
 
 ### Tools:
-To scrape the data, the `requests` and `BeautifulSoup` packages in Python will be utilized. The scraped data will be stored in a comma-separated values file&mdash;this file will continue to be added to as more data is scraped&mdash;and will be read in to python and manipulated using the `pandas` package. The `pandas` package will also be used for initial exploratory data analysis.
-
-The linear regression model in `scikit-learn` will then be used to interpret the importance of lead-actor gender and age in predicting worldwide, lifetime movie gross.
-
-We will use the matplotlib package to create visualizations of the resulting model.
+Excel will be used for cleaning and connecting the various datasets described, and for the preliminary exploratory analysis of the data. Tableau will be used to visualize significant findings.
 
 ### MVP:
 
-The minimal viable product (MVP) for this project will likely be a simple linear regression model including just a few features (e.g., budget and opening weekend gross), so that we can begin to understand what the most important features will be in predicting the lifetime gross of a movie. Given sufficient time, we may build separate models for male versus female lead-actors, to see how the model coefficients change between these groups.
+The minimal viable product (MVP) for this project will likely be a more throughly scoped project proposal, including a more thoroughly developed impact hypothesis and some possible solution paths, as well as one or more key visualizations.
