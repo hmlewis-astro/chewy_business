@@ -25,4 +25,4 @@ Excel will be used for cleaning and connecting the various datasets described, a
 
 ### MVP:
 
-The minimal viable product (MVP) for this project will likely be a more throughly scoped project proposal, including a more thoroughly developed impact hypothesis and some additional possible solution paths, as well as one or more key visualizations.
+The minimal viable product (MVP) for this project will likely be a more throughly scoped project proposal, including a more developed impact hypothesis and some additional possible solution paths, as well as one or more key visualizations.
