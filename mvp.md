@@ -10,7 +10,7 @@ A new wave of COVID-19 infections are projected to occur in the US in the coming
 
 We hypothesize that understanding (1) the number of pet-owning households and (2) the number of existing options available for pet supplies at the county-level&mdash;and how those metrics have changed since March 2020&mdash;will allow us to determine an ideal location for the fulfillment center.
 
-**Primary impact:** determine an ideal location for the fulfillment center
+**Primary impact:** determine an ideal location for the fulfillment center <br>
 **Secondary impacts:** prevent extra fulfillment spend (and therefore, increase net profits), decrease the fraction of late deliveries (i.e., longer than the promised, three-day delivery), decrease average order delivery time, increase customer satisfaction
 
 
