@@ -1,8 +1,3 @@
-Instructor notes:
-- I'm seeing two impacts: one is to determine where to put a third location and the other is to prevent extra fulfillment spend. Which is the primary and which is the secondary impact? Each would include different types of modeling. What kinds of models align with each impact? What is your primary project here? Or you could discuss both goals. --- Primary impact: determine where to put a third location, an appropriate location should prevent extra fulfillment spend
-- I would leave off customer satisfaction unless you want to go deeper into determining a metric for satisfaction and evaluating what success would look like. You can definitely use it! But it's a third (and as you mention, contingent) impact. --- An appropriate location would also improve customer satisfaction (rating of each order, etc.)
-- Looks good! I would just sort out your impacts and modeling goals. Also think about what other solution paths might exist. ---
-
 # Minimum Viable Product
 ## The Problem with Pandemic Puppies: improving fulfillment efficiency at Chewy
 
@@ -20,7 +15,7 @@ We want to determine where to locate a new Chewy fulfillment center. We hypothes
 
 ### Solution
 
-The solution path pursued here is to build a model to predict customer buying patterns based on these (and other) factors, specifically from online retailers like Chewy, to better inform this expansion.
+The solution path pursued here is to build a spatio-temporal clustering model to predict customer buying patterns based on these (and other) factors, specifically from online retailers like Chewy, to better inform this expansion.
 
 - How would you specify "customer buying patterns"? How much they spend? How many orders they make? How many items per order? Will they repurchase? List out the different kinds of models you might want to build. --- Under "Solution"
 
