@@ -15,7 +15,6 @@ We hypothesize that understanding (1) the number of pet-owning households, (2) t
 **Secondary impacts:** prevent extra fulfillment spend (and therefore, increase net profits), decrease the fraction of late deliveries (i.e., longer than the promised, three-day delivery), decrease average order delivery time, increase customer satisfaction
 
 
-**Assumptions/Risks:**
 <table style="width:100%">
   <tr>
     <th>Assumptions</th>
@@ -30,8 +29,8 @@ We hypothesize that understanding (1) the number of pet-owning households, (2) t
     <td>Slow delivery times might actually be due to one or more existing, understaffed facilities that simply require more fulfillment specialists</td>
   </tr>
   <tr>
-    <td>Location should depend strongly on where pet owners have the fewest options for in-person purchase of pet supplies</td>
-    <td>Slow delivery times might actually be due to one or more existing, understaffed facilities that simply require more fulfillment specialists</td>
+    <td>Location should depend on where there is a high density of pet-owning households per pet supply store (generally, few pet supply stores to support the population)</td>
+    <td>Few pet supply stores in an area may mean that there is not a market for these products or that one particular store already has a monopoly on the market</td>
   </tr>
 </table>
 
