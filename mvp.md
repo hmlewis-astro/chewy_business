@@ -27,10 +27,10 @@ We hypothesize that understanding the density of pet-owning households per pet s
   </tr>
   <tr>
     <td>Extra fulfillment centers are required to meet additional fulfillment needs</td>
-    <td>Slow delivery times might actually be due to one or more existing, understaffed facilities that simply require more fulfillment specialists</td>
+    <td>Slow delivery times might be due to one or more existing, understaffed facilities that simply require more fulfillment specialists</td>
   </tr>
   <tr>
-    <td>Location should depend on where there is a high density of pet-owning households per pet supply store (generally, few pet supply stores to support the population)</td>
+    <td>Location should depend on where there is a high density of pet-owning households per pet supply store (i.e., few pet supply stores to support the population)</td>
     <td>Few pet supply stores in an area may mean that there is not a market for these products or that one particular store already has a monopoly on the market</td>
   </tr>
 </table>
@@ -81,5 +81,5 @@ Given access to the required data, continued efforts on this project include dev
 Below is a beta version of the dashboard that we plan to submit to Chewy for review of the initial EDA.
 
 <p align="center">
-<img src="https://github.com/hmlewis-astro/chewy_business/blob/main/chewy_dashboard_mvp.png" width="800" />
+<img src="https://github.com/hmlewis-astro/chewy_business/blob/main/chewy_dashboard_mvp.png" width="1000" />
 </p>
