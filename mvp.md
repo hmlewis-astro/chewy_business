@@ -8,7 +8,7 @@ A new wave of COVID-19 infections are projected to occur in the coming fall/wint
 
 ### Impact Hypothesis
 
-We hypothesize that understanding (1) the number of pet-owning households, (2) the number of existing options available for in-person purchase of pet supplies, and (3) the total customer spend on Chewy products at the county-level&mdash;and how those metrics have changed since March 2020&mdash;will allow us to determine an ideal location for the fulfillment center. We will use these metrics to determine the location for the new fulfillment center.
+We hypothesize that understanding the density of pet-owning households per pet supply store and the total customer spend on Chewy products per capita (total customer spend depends on the total population, and needs to be standardized across counties of differing size)&mdash;and how those metrics have changed since March 2020 (the start of the pandemic)&mdash;will allow us to determine an ideal location for the fulfillment center.
 
 
 **Primary impact:** determine an ideal location for the fulfillment center <br>
@@ -36,12 +36,26 @@ We hypothesize that understanding (1) the number of pet-owning households, (2) t
 
 ### Solution
 
-The solution path pursued here is to build a spatio-temporal clustering model to predict customer buying patterns based on these (and other) factors, specifically from online retailers like Chewy, to better inform this expansion. in order to best serve parts of the country with (1) a lack of other pet supply stores, (2) increasing pet ownership, (3) an increasing number of orders, and (4) the highest risk of late delivery from Chewy
+The solution path pursued here is to build a geospatial clustering model to predict customer spend based on:
+1. the number of pet-owning households,
+2. the number of existing options available for in-person purchase of pet supplies,
+3. the historical total customer spend (per capita) on Chewy products, and
+4. how these factors have changed (e.g., increase/decrease of pet ownership) since March 2020.
 
-- How would you specify "customer buying patterns"? How much they spend? How many orders they make? How many items per order? Will they repurchase? List out the different kinds of models you might want to build. --- Under "Solution"
+**Data:**
+To fully pursue this solution path, the data required are:
+- a complete survey of pet-owning households continued over several years that has been updated since March 2020,
+- a complete survey of existing pet supply stores continued over several years that has been updated since March 2020, and
+- data on historical customer spend at Chewy, ideally, at a small, geographically granular-level.
 
-- Measurem of success: After the new facility is opened, the success of the project will be measured by the amount of fulfillment spend above or below that of the previous quarter, and by the fractional decrease in late orders.
+The data available are:
+- an approximate count of the number of pet-owning households in each state from a survey carried out in December 2016 (not updated since March 2020),
+- an approximate count of the number of veterinary, pet care, and pet supply businesses in each US county from a survey carried out in December 2019 (not updated since March 2020),
+- (likely) data on historical customer spend at Chewy at a small, geographically granular-level (though not availably publicly)
 
+**Measures of success:**
+- Technical: model achieves a high silhouette score (how similar a datapoint is to other datapoints in its cluster, relative to datapoints not in its cluster) and identifies a reasonable location for the new fulfillment center (i.e., not too close to an existing fulfillment center, not in an area with very few pet-owning households)
+- Non-technical: amount of fulfillment spend above or below that of the previous quarter, amount of change in the fraction of late deliveries, amount of change in the average order delivery time
 
 
 **Other possible Solution Paths:**
@@ -50,7 +64,7 @@ The solution path pursued here is to build a spatio-temporal clustering model to
 - Rather than optimizing the location to be in a region with a lack of other pet supply stores, optimize to be in a competitive area (i.e., with a high number of pet-owning households, and many other pet supply options); potential to take business from other/smaller companies
 
 
-### Data
+### EDA
 
 For the preliminary analysis presented here, we used data from the American Veterinary Medical Association, which provides the total number of pet-owning households per state (within the contiguous US), along with data from the US Census (population per county), to estimate the number of pet-owning households per county. Data from the County Business Patterns (CBP) economic survey (carried out by the US Census Bureau, Business Statistics Branch) provides the number of veterinary, pet care (e.g., grooming), and pet supply store businesses per county. We have used these data to determine what counties have very few pet service businesses per pet-owning household to determine how "under-served" (or "over-served") pet owners are in each county.
 
