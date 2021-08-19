@@ -36,12 +36,12 @@ The MTA and heat data are then joined together based on the spatial location of 
 By combining the derived "heat index" and "crowd index" for each station, I calculate a "risk index" (again, scaled from 1 to 10, with 10 being high risk) for heat-illness at each station.
 
 #### Visualization
-The interactive Tableau dashboard containing these data and analyses can be downloaded [here](TODO) or can be accessed on the web [here](TODO).
+The interactive Tableau dashboard containing these data and analyses can be downloaded [here](https://github.com/hmlewis-astro/chewy_business/raw/main/Chewy_Fulfillment_Center_EDA.twbx) or can be accessed on the web [here](https://public.tableau.com/views/ChewyFulFillmentCenterEDA/PublicDashboard?:language=en-US&:display_count=n&:origin=viz_share_link).
 
-Example: A map of New York City's subway stations, where each station location is colored by its "risk index", which considers heat-illness risk due to both high heat and large crowds. Redder colors indicate higher-risk stations.
+Figure: Screencap of the interactive Tableau dashboard.
 
 <p align="center">
-<img src="https://github.com/hmlewis-astro/mta_analysis/blob/main/heat_data/data/output/analysis_out/final/plots/new-york-station-risk-index.png" width="600" />
+<img src="https://github.com/hmlewis-astro/chewy_business/blob/main/final_pres/chewy_dashboard_full.png" width="800" />
 </p>
 
 
