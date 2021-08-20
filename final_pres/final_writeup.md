@@ -13,10 +13,21 @@ The ultimate goal of this project is to determine an ideal location for a Chewy 
 
 According to the [ASPCA](https://aspca.app.box.com/s/v4t7yrwalwk39mf71a857ivqoxnv2x3d), since the beginning of the COVID-19 pandemic, approximately one in five households in the US has acquired a new pet. This "pet boom" placed a serious strain on the supply chain of many pet supply companies; specifically, Chewy&mdash;an exclusively online retailer of pet food and pet-related products&mdash;[reported $20 million in extra fulfillment spend](https://news.alphastreet.com/chewy-inc-nyse-chwy-q1-2020-earnings-call-transcript/) during 2020 Q1. To prevent losses in the future, Chewy hopes to get ahead of further fulfillment and supply-chain breakdowns by opening another new fulfillment facility, and needs to determine where to locate this new facility.
 
+
+<details><summary>Impact hypothesis</summary>
+<p>
+
 **Primary impact:** determine an ideal location for the fulfillment center <br>
 **Secondary impacts:** prevent extra fulfillment spend (and therefore, increase net profits), decrease the fraction of late deliveries (i.e., longer than the promised, three-day delivery), decrease average order delivery time, increase customer satisfaction
 
-**Solution paths:**
+</p>
+</details>
+
+
+
+<details><summary>Solution paths</summary>
+<p>
+
 solution path pursued here is to build a geospatial clustering model to predict customer spend based on:
 1. the number of pet-owning households,
 2. the number of existing options available for in-person purchase of pet supplies,
@@ -26,12 +37,23 @@ solution path pursued here is to build a geospatial clustering model to predict 
 - Analyze fulfillment data&mdash;e.g., the largest fraction of incorrect fulfillments and longest average order delivery time&mdash;to determine warehouses that might be at/over-capacity; locate new facility nearby (within 100 miles) the struggling facility
 - Rather than optimizing the location to be in a region with a lack of other pet supply stores, optimize to be in a competitive area (i.e., with a high number of pet-owning households, and many other pet supply options); potential to take business from other/smaller companies
 
-**Measures of success:**
+</p>
+</details>
+
+
+
+<details><summary>Measures of success</summary>
+<p>
+
 - Technical: model achieves a high silhouette score (how similar a datapoint is to other datapoints in its cluster, relative to datapoints not in its cluster) and identifies a reasonable location for the new fulfillment center (i.e., not too close to an existing fulfillment center, not in an area with very few pet-owning households)
 - Non-technical: amount of fulfillment spend above or below that of the previous quarter, amount of change in the fraction of late deliveries, amount of change in the average order delivery time
 
+</p>
+</details>
 
-<details><summary>**Assumptions & risks**</summary>
+
+
+<details><summary>Assumptions & risks</summary>
 <p>
 
 <table style="width:100%">
