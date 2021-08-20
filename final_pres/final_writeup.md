@@ -16,6 +16,48 @@ According to the [ASPCA](https://aspca.app.box.com/s/v4t7yrwalwk39mf71a857ivqoxn
 **Primary impact:** determine an ideal location for the fulfillment center <br>
 **Secondary impacts:** prevent extra fulfillment spend (and therefore, increase net profits), decrease the fraction of late deliveries (i.e., longer than the promised, three-day delivery), decrease average order delivery time, increase customer satisfaction
 
+**Solution paths:**
+solution path pursued here is to build a geospatial clustering model to predict customer spend based on:
+1. the number of pet-owning households,
+2. the number of existing options available for in-person purchase of pet supplies,
+3. the historical total customer spend (per capita) on Chewy products, and
+4. how these factors have changed (e.g., increase/decrease of pet ownership) since March 2020.
+- Determine the location (within the contiguous US) that would maximize the distance between all existing centers and the new fulfillment center
+- Analyze fulfillment data&mdash;e.g., the largest fraction of incorrect fulfillments and longest average order delivery time&mdash;to determine warehouses that might be at/over-capacity; locate new facility nearby (within 100 miles) the struggling facility
+- Rather than optimizing the location to be in a region with a lack of other pet supply stores, optimize to be in a competitive area (i.e., with a high number of pet-owning households, and many other pet supply options); potential to take business from other/smaller companies
+
+**Measures of success:**
+- Technical: model achieves a high silhouette score (how similar a datapoint is to other datapoints in its cluster, relative to datapoints not in its cluster) and identifies a reasonable location for the new fulfillment center (i.e., not too close to an existing fulfillment center, not in an area with very few pet-owning households)
+- Non-technical: amount of fulfillment spend above or below that of the previous quarter, amount of change in the fraction of late deliveries, amount of change in the average order delivery time
+
+
+<details><summary>**Assumptions & risks**</summary>
+<p>
+
+<table style="width:100%">
+  <tr>
+    <th>Assumptions</th>
+    <th>Risks</th>
+  </tr>
+  <tr>
+    <td>Observed increase in pet and pet supply spending since March 2020 will persist through the next wave of COVID-19 infections</td>
+    <td>If pet supply spending returns to pre-pandemic levels, new fulfillment center may be under-utilized and lead to a loss in net profits</td>
+  </tr>
+  <tr>
+    <td>Extra fulfillment centers are required to meet additional fulfillment needs</td>
+    <td>Slow delivery times might be due to one or more existing, understaffed facilities that simply require more fulfillment specialists</td>
+  </tr>
+  <tr>
+    <td>Location should depend on where there is a high density of pet-owning households per pet supply store (i.e., few pet supply stores to support the population)</td>
+    <td>Few pet supply stores in an area may mean that there is not a market for these products or that one particular store already has a monopoly on the market</td>
+  </tr>
+</table>
+
+</p>
+</details>
+
+
+
 ### Data
 
 For the preliminary analysis presented here, we used data from the American Veterinary Medical Association (AVMA), which provides the total number of pet-owning households per state (within the contiguous US), along with data from the US Census (population per county), to estimate the **number of pet-owning households per county**.
