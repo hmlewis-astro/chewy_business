@@ -32,10 +32,10 @@ We hypothesize that understanding the density of pet-owning households per pet s
 
 **Suggested solution path:**
 Determine the location based on a geospatial clustering model to predict future customer spend based on:
-1. the number of pet-owning households,
-2. the number of existing options available for in-person purchase of pet supplies,
-3. the historical total customer spend (per capita) on Chewy products, and
-4. how these factors have changed (e.g., increase/decrease of pet ownership) since March 2020.
+- the number of pet-owning households,
+- the number of existing options available for in-person purchase of pet supplies,
+- the historical total customer spend (per capita) on Chewy products, and
+- how these factors have changed (e.g., increase/decrease of pet ownership) since March 2020.
 
 **Other possible paths:**
 - Determine the location (within the contiguous US) that would maximize the distance between all existing centers and the new fulfillment center
