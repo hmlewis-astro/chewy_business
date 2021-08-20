@@ -4,41 +4,43 @@
 
 ### Abstract
 
+The ultimate goal of this project is to determine an ideal location for a Chewy fulfillment center. We hypothesize that understanding the density of pet-owning households per pet supply store, as well as total customer spend on Chewy products in each US county will allow us to determine an ideal location for the fulfillment center. We suggest building a geospatial clustering model to identify clusters of counties with (1) few pet supply retailers per pet-owning household and (2) high customer spend at Chewy. From our initial analysis, we find that pet owners in Mississippi, Louisiana, and Alabama&mdash;states along the Gulf Coast&mdash;have relatively fewer options in pet supply retailers than pet owners in other parts of the US. Additional data on Chewy customer spend in each US county is required to fully complete the proposed model, and determine an ideal location for the fulfillment center.
+
+
 
 
 ### Design
 
-This project comes at the request of the New York City Department of Health; for an upcoming press release concerning summer heat, the Department wants to compile a list of MTA stations that pose the greatest risk to people at high-risk for heat-related illnesses. Because heat stress and heat-related illnesses are exacerbated by conditions that are incredibly crowded (in addition to extremely hot), they want to understand which stations are most impacted by _both of these factors_ (i.e., heat and crowds). By providing daily subway users with this information, the Department hopes to prevent a spike in heat-related illnesses this summer, and allow MTA riders to make informed decisions regarding their subway use during future heat waves.
+According to the [ASPCA](https://aspca.app.box.com/s/v4t7yrwalwk39mf71a857ivqoxnv2x3d), since the beginning of the COVID-19 pandemic, approximately one in five households in the US has acquired a new pet. This "pet boom" placed a serious strain on the supply chain of many pet supply companies; specifically, Chewy&mdash;an exclusively online retailer of pet food and pet-related products&mdash;[reported $20 million in extra fulfillment spend](https://news.alphastreet.com/chewy-inc-nyse-chwy-q1-2020-earnings-call-transcript/) during 2020 Q1. To prevent losses in the future, Chewy hopes to get ahead of further fulfillment and supply-chain breakdowns by opening another new fulfillment facility, and needs to determine where to locate this new facility.
+
+**Primary impact:** determine an ideal location for the fulfillment center <br>
+**Secondary impacts:** prevent extra fulfillment spend (and therefore, increase net profits), decrease the fraction of late deliveries (i.e., longer than the promised, three-day delivery), decrease average order delivery time, increase customer satisfaction
 
 ### Data
 
-#### Heat data
-Satellite imagery of New York City (with <1% cloud cover) was captured during Summer 2018 by the NASA Landsat 8 satellite. This image, downloaded from [Earth Explorer](https://earthexplorer.usgs.gov/), captured a roughly 185 km by 180 km (114 mi by 112 mi) image of the land area in 11 spectral bands (file size ~70 MB); for each image pixel, brightness measurements in multiple bands can be combined (via known relations; see Algorithms section below) to derive precise land temperature measurements. Surface temperatures can be estimated with 30 meter spatial resolution.
+For the preliminary analysis presented here, we used data from the American Veterinary Medical Association (AVMA), which provides the total number of pet-owning households per state (within the contiguous US), along with data from the US Census (population per county), to estimate the **number of pet-owning households per county**.
 
-#### Crowd-size data
-The MTA publishes weekly turnstile data that provides transit ridership as measured by turnstile entries and exits, with readings taken approximately every 4 hours. Though data is available going back to 2010, the database utilized here contains ridership data only for the year of 2018 (to correspond with the captured satellite imagery; ~10.3M rows, file size ~800 MB). Geolocations (i.e., latitude, longitude coordinates) for most MTA stations are collected from a publicly available [datafile](https://github.com/chriswhong/nycturnstiles/blob/master/geocoded.csv), though some stations were added by-hand to the [file available in this repo](https://github.com/hmlewis-astro/mta_analysis/blob/main/geocoded.csv).
+Data from the County Business Patterns (CBP) economic survey (carried out by the US Census Bureau, Business Statistics Branch) provides the number of veterinary, pet care (e.g., grooming), and pet supply store businesses per county; each of these three types of business generally sell some pet products&mdash;from medications and prescription diet foods, to toys and accessories&mdash;so we consider each of these types of businesses to be pet supply retailers. We calculate the total **number of pet supply retailers per county**, only for counties with three or more of _each_ of these types of businesses (required for anonymity).
+
+We used these data to determine which US counties have very few pet service businesses per pet-owning household (i.e., the density of pet-owning households per pet service business) to determine how "under-served" (or "over-served") pet owners are in each US county.
 
 
 ### Algorithms
 
 #### Cleaning & EDA
-Given the NASA Landsat 8 image, the New York City Census block shapefile is used as reference to extract spectral radiances, and derive the median temperature within each Census block; outliers are replaced with the 1st and 99th percentile temperature values. From the observed temperature variations over the land area, a "heat index" in the range of 1 to 10 is calculated and assigned to each Census block, 10 being a land area with higher than median heat, 1 with lower than median heat.
+All cleaning and data analysis is carried out in Excel.
 
-Given the SQL database containing MTA turnstile data, I created a new table within that database with the available geolocation information. Using SQLAlchemy in Python, these tables are joined (on the `booth`/`C/A` and `unit`) so that each turnstile now also has an associated latitude and longitude. From the database containing all turnstile data for the year 2018, only data collected during summer months (i.e., between 06/01/2018 and 08/31/2018) were selected for this analysis.
+From the AVMA data, we find that approximately 59% of households (~72 million households) in the US own one or more pets. Because the AVMA data give pet-ownership by state, we divide the total number of pet-owning households per state into the counties by population. For example, in a state with 100,000 pet-owning households, we assume that a county with 1% of the human population also has 1% of the pet-owning households, i.e., 1,000 households.
 
-I then calculated the time passed (in seconds) and the change in the turnstile `entries` counts between each reading; again, readings occur roughly every four hours. Here, there are two peculiarities in the data: (1) some turnstiles are counting backwards and (2) turnstiles appear to reset, leading to apparent increases in `entries` on the order of 10<sup>5</sup>-10<sup>7</sup> riders over just a few hours. To deal with these, I (1) always take the absolute value of the number of entries between measurements and (2) set an upper limit of 3 entries per turnstile per second. The later of these allows for a dynamic upper-limit to be set for each observation, depending on the time between measurements, rather than setting a single upper-limit.
+Given the CBP database, we drop rows from the data that break the total number of pet supply retailers down into subcategories based on the number of employees; we only need information about the total number of pet supply retailers, and not the number of employees at each retailer.
 
 #### Aggregation
-The cleaned MTA data are then aggregated by station and linename, such that the net entries over the observed three month period can be derived. From the net entries, a "crowd index" in the range of 1 to 10 is calculated for each station, 10 being the most crowded, 1 being the least.
-
-The MTA and heat data are then joined together based on the spatial location of each station.
-
-By combining the derived "heat index" and "crowd index" for each station, I calculate a "risk index" (again, scaled from 1 to 10, with 10 being high risk) for heat-illness at each station.
+The total number of pet supply retail establishments in each county is aggregated into a pivot table in the Excel workbook. The pivot table is joined with the table containing the number of pet-owning households per county, and this table is imported to Tableau for visualization.
 
 #### Visualization
 The interactive Tableau dashboard containing these data and analyses can be downloaded [here](https://github.com/hmlewis-astro/chewy_business/raw/main/Chewy_Fulfillment_Center_EDA.twbx) or can be accessed on the web [here](https://public.tableau.com/views/ChewyFulFillmentCenterEDA/PublicDashboard?:language=en-US&:display_count=n&:origin=viz_share_link).
 
-Figure: Screencap of the interactive Tableau dashboard.
+**Figure**: Screencap of the interactive Tableau dashboard.
 
 <p align="center">
 <img src="https://github.com/hmlewis-astro/chewy_business/blob/main/final_pres/chewy_dashboard_full.png" width="800" />
@@ -48,6 +50,7 @@ Figure: Screencap of the interactive Tableau dashboard.
 ### Tools
 - Excel for data cleaning, aggregation, and analysis
 - Tableau for plotting and interactive visualizations
+
 
 ### Communication
 
