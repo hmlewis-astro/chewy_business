@@ -16,6 +16,7 @@ According to the [ASPCA](https://aspca.app.box.com/s/v4t7yrwalwk39mf71a857ivqoxn
 
 <details><summary>Impact hypothesis</summary>
 <p>
+We hypothesize that understanding the density of pet-owning households per pet supply store, as well as the total customer spend on Chewy products per capita &mdash;and how those metrics have changed since March 2020 (the start of the pandemic)&mdash;will allow us to determine an ideal location for the fulfillment center.
 
 **Primary impact:** determine an ideal location for the fulfillment center <br>
 **Secondary impacts:** prevent extra fulfillment spend (and therefore, increase net profits), decrease the fraction of late deliveries (i.e., longer than the promised, three-day delivery), decrease average order delivery time, increase customer satisfaction
@@ -28,11 +29,14 @@ According to the [ASPCA](https://aspca.app.box.com/s/v4t7yrwalwk39mf71a857ivqoxn
 <details><summary>Solution paths</summary>
 <p>
 
-solution path pursued here is to build a geospatial clustering model to predict customer spend based on:
+**Suggested solution path:**
+Determine the location based on a geospatial clustering model to predict future customer spend based on:
 1. the number of pet-owning households,
 2. the number of existing options available for in-person purchase of pet supplies,
 3. the historical total customer spend (per capita) on Chewy products, and
 4. how these factors have changed (e.g., increase/decrease of pet ownership) since March 2020.
+
+**Other possible paths:**
 - Determine the location (within the contiguous US) that would maximize the distance between all existing centers and the new fulfillment center
 - Analyze fulfillment data&mdash;e.g., the largest fraction of incorrect fulfillments and longest average order delivery time&mdash;to determine warehouses that might be at/over-capacity; locate new facility nearby (within 100 miles) the struggling facility
 - Rather than optimizing the location to be in a region with a lack of other pet supply stores, optimize to be in a competitive area (i.e., with a high number of pet-owning households, and many other pet supply options); potential to take business from other/smaller companies
@@ -78,6 +82,18 @@ solution path pursued here is to build a geospatial clustering model to predict 
 </p>
 </details>
 
+
+<details><summary>Models</summary>
+<p>
+
+Given access to Chewy customer spend data, we will develop a geospatial clustering model (likely using K-means or density-based spatial clustering/DBSCAN) incorporating these data. The model will identify spatial clusters of US counties with similar characteristics in customer spend at Chewy _and_ the number of pet-owning households per pet supply store, rather than just the later (as done here).
+
+As a first step, we will compare with the results we have in hand, to see if those Gulf Coast states still stand out. That is, are they under-served by other pet supply retailers _and_ is customer spend high among pet-owners in that area?
+
+We will choose from among the clusters the one that appears to be most under-served by other pet supply retailers, and that has relatively high (and, ideally, increasing) customer spend at Chewy, and select a precise location within that cluster for the new fulfillment center (based on zoning, real-estate prices, work-force potential, etc).
+
+</p>
+</details>
 
 
 ### Data
