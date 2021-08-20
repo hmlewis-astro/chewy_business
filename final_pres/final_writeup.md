@@ -16,6 +16,7 @@ According to the [ASPCA](https://aspca.app.box.com/s/v4t7yrwalwk39mf71a857ivqoxn
 
 <details><summary>Impact hypothesis</summary>
 <p>
+
 We hypothesize that understanding the density of pet-owning households per pet supply store, as well as the total customer spend on Chewy products per capita &mdash;and how those metrics have changed since March 2020 (the start of the pandemic)&mdash;will allow us to determine an ideal location for the fulfillment center.
 
 **Primary impact:** determine an ideal location for the fulfillment center <br>
